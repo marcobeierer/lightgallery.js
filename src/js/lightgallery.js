@@ -686,6 +686,7 @@ Plugin.prototype.loadContent = function(index, rec, delay) {
 
         if (_srcset) {
             _img.setAttribute('srcset', _srcset);
+			/*
             try {
                 picturefill({
                     elements: [_img[0]]
@@ -693,6 +694,7 @@ Plugin.prototype.loadContent = function(index, rec, delay) {
             } catch (e) {
                 console.error('Make sure you have included Picturefill version 2');
             }
+			*/
         }
 
         if (this.s.appendSubHtmlTo !== '.lg-sub-html') {

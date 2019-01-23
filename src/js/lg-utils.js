@@ -110,7 +110,6 @@ var utils = {
 
 			// this method is also used by plugins which have another suffix (for example .lgmt), thus check eventName and not event
 			if (['touchstart', 'mouseup'].includes(eventName)) {
-				console.log(event);
 				captureOrOptions = {
 					capture: false,
 					passive: true,

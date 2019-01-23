@@ -104,7 +104,20 @@ var utils = {
             _id += '&' + utils.Listener.uid;
             el.setAttribute('lg-event-uid', _id);
             utils.Listener[event + utils.Listener.uid] = fn;
-            el.addEventListener(event.split('.')[0], fn, false);
+
+			var captureOrOptions = false;
+			var eventName = event.split('.')[0]
+
+			// this method is also used by plugins which have another suffix (for example .lgmt), thus check eventName and not event
+			if (['touchstart', 'mouseup'].includes(eventName)) {
+				console.log(event);
+				captureOrOptions = {
+					capture: false,
+					passive: true,
+				};
+			}
+
+            el.addEventListener(eventName, fn, captureOrOptions);
         });
     },
 

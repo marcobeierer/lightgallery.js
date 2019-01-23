@@ -772,7 +772,7 @@ $jscomp.registerAndLoadModule(function($$require, $$exports, $$module) {
       utils.Listener[event + utils.Listener.uid] = fn;
       var captureOrOptions = false;
       var eventName = event.split(".")[0];
-      if (["touchstart", "mouseup"].includes(eventName)) {
+      if (["touchstart"].includes(eventName)) {
         captureOrOptions = {capture:false, passive:true};
       }
       el.addEventListener(eventName, fn, captureOrOptions);

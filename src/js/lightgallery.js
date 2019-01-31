@@ -264,9 +264,7 @@ Plugin.prototype.build = function(index) {
 
     utils.trigger(_this.el, 'onAfterOpen');
 
-    // Hide controllers if mouse doesn't move for some period
-    utils.on(_this.outer, 'mousemove.lg click.lg touchstart.lg', function() {
-
+	var closeMenu = function() {
         utils.removeClass(_this.outer, 'lg-hide-items');
 
         clearTimeout(_this.hideBartimeout);
@@ -275,9 +273,12 @@ Plugin.prototype.build = function(index) {
         _this.hideBartimeout = setTimeout(function() {
             utils.addClass(_this.outer, 'lg-hide-items');
         }, _this.s.hideBarsDelay);
+    }
 
-    });
+    // Hide controllers if mouse doesn't move for some period
+    utils.on(_this.outer, 'mousemove.lg click.lg touchstart.lg', closeMenu);
 
+	closeMenu(); // fixes bug to close when opened but mouse is not moved
 };
 
 Plugin.prototype.structure = function() {

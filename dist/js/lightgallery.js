@@ -936,13 +936,15 @@ $jscomp.registerAndLoadModule(function($$require, $$exports, $$module) {
     _this.counter();
     _this.closeGallery();
     module$lg_utils["default"].trigger(_this.el, "onAfterOpen");
-    module$lg_utils["default"].on(_this.outer, "mousemove.lg click.lg touchstart.lg", function() {
+    var closeMenu = function() {
       module$lg_utils["default"].removeClass(_this.outer, "lg-hide-items");
       clearTimeout(_this.hideBartimeout);
       _this.hideBartimeout = setTimeout(function() {
         module$lg_utils["default"].addClass(_this.outer, "lg-hide-items");
       }, _this.s.hideBarsDelay);
-    });
+    };
+    module$lg_utils["default"].on(_this.outer, "mousemove.lg click.lg touchstart.lg", closeMenu);
+    closeMenu();
   };
   Plugin.prototype.structure = function() {
     var list = "";
